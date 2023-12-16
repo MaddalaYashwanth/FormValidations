@@ -23,29 +23,13 @@
 
     <script>
         let form_getting=document.getElementsByTagName("form");
-        // or we can also use form_getting=document.forms;
-        // console.log(form_getting[0]);
-
-        // var arr1=[];
-        var arr1=JSON.parse(localStorage.getItem("details")) || [];
+        var arr1=JSON.parse(localStorage.getItem("details"));
         console.log(arr1);
-        if(arr1==null){
+        if(arr1==null || arr1==undefined){
             arr1=[];
         }
         form_getting[0].addEventListener("submit",(e)=>{
-            // console.log(e);
-            // Here "e" in the call back function is the event of the form action.
             e.preventDefault();
-            // here when we given input details in the form, by default it stores and shows but it refreshes suddenly.So to prevent this refresh we use preventdefault() method.
-            // when we console.log(e) we can see the tags which where in the form are present in "target" and values which user enters will store in the "value".
-            // var User_name=e["target"][0]["value"];
-            // var Mobile=e["target"][1]["value"];
-            // var Email=e["target"][2]["value"];
-            // var Pass=e["target"][3]["value"];
-            // console.log(input1);
-            // console.log(input2);
-            // console.log(input3);
-            // console.log(input4);
             var obj={
                 User_name:e["target"][0]["value"],
                 Mobile:e["target"][1]["value"],
@@ -55,8 +39,6 @@
             };
             // console.log(obj);
             if((obj["User_name"]).match((/^[A-Z]/))){
-                // Here our username should starts with uppercase letter.
-                // console.log(obj);
                if((obj["Mobile"].length)==10){
                     // console.log(obj);
                     if((obj["Email"]).match((/.com$/))){
